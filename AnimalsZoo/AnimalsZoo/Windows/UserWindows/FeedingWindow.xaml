@@ -1,0 +1,117 @@
+﻿<Window x:Class="AnimalsZoo.Windows.UserWindows.FeedingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AnimalsZoo.Windows.UserWindows"
+        mc:Ignorable="d"
+        Title="FeedingWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+
+        <Button Grid.Column="2" Grid.Row="0" Click="BackBtn_Click" Height="30" Width="50" Margin="199,13,18,29">
+            <TextBlock Text="Back" TextWrapping="Wrap" TextAlignment="Center"/>
+        </Button>
+        
+        <StackPanel Grid.Column="2" VerticalAlignment="Top" Margin="0,62,0,0" Grid.RowSpan="2">
+            <TextBlock Text="Products"/>
+            <ListView x:Name="tbProduct">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock><Run Text="{Binding Name}"/></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+
+        <Button Grid.Column="2" Grid.Row="2" Click="FeedingBtn_Click" Height="30" Width="200" Margin="34,118,33,38">
+            <TextBlock Text="Complete" TextWrapping="Wrap" TextAlignment="Center"/>
+        </Button>
+
+        <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="200" Margin="17,0,0,0">
+            <TextBlock Text="Date"></TextBlock>
+            <TextBox x:Name="tbDate" Height="30"></TextBox>
+        </StackPanel>
+
+        <ScrollViewer Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">
+            <StackPanel>
+                <ListView x:Name="ListAviary">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel>
+                                        <TextBlock>
+                                            <Run Text="Name | "></Run>
+                                        </TextBlock>
+                                        <TextBlock>
+                                            <Run Text="{Binding Name}"></Run>
+                                        </TextBlock>
+                                    </StackPanel>
+                                    <StackPanel>
+                                        <TextBlock>
+                                            <Run Text="Number of animals | "></Run>
+                                        </TextBlock>
+                                        <TextBlock>
+                                            <Run Text="{Binding AnimalCount}"></Run>
+                                        </TextBlock>
+                                    </StackPanel>
+                                    <StackPanel>
+                                        <TextBlock>
+                                            <Run Text="Temperature | "></Run>
+                                        </TextBlock>
+                                        <TextBlock>
+                                            <Run Text="{Binding Temperature.Value}"></Run>
+                                        </TextBlock>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
+        </ScrollViewer>
+
+        <ScrollViewer Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2">
+            <StackPanel>
+                <ListView x:Name="ListAnimal">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel>
+                                        <TextBlock>
+                                            <Run Text="Name | "></Run>
+                                        </TextBlock>
+                                        <TextBlock>
+                                            <Run Text="{Binding Name}"></Run>
+                                        </TextBlock>
+                                    </StackPanel>
+                                    <StackPanel>
+                                        <TextBlock>
+                                            <Run Text="Kind | "></Run>
+                                        </TextBlock>
+                                        <TextBlock>
+                                            <Run Text="{Binding AnimalKind.Name}"></Run>
+                                        </TextBlock>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

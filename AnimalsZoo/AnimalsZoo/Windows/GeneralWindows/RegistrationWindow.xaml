@@ -1,0 +1,42 @@
+﻿<Window x:Class="AnimalsZoo.Windows.GeneralWindows.RegistrationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AnimalsZoo.Windows.GeneralWindows"
+        mc:Ignorable="d"
+        Title="RegistrationWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+            <TextBlock Text="Role"></TextBlock>
+            <ComboBox x:Name="tbRole" Height="30" Text="">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <Run Text="{Binding Name}"></Run>
+                        </TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBlock Text="Name"></TextBlock>
+            <TextBox x:Name="tbName" Height="30"></TextBox>
+            <TextBlock Text="Login"></TextBlock>
+            <TextBox x:Name="tbLogin" Height="30"></TextBox>
+            <TextBlock Text="Password"></TextBlock>
+            <TextBox x:Name="tbPassword" Height="30"></TextBox>
+            <Button Height="30" Click="RegBtn_Click" Content="Registration"></Button>
+            <Button Height="30" Click="BackBtn_Click" Content="Back"></Button>
+        </StackPanel>
+    </Grid>
+</Window>

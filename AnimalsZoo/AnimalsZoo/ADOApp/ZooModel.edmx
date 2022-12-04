@@ -1,0 +1,991 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище AnimalsZooModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Password" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="User_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Animal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Aviary_Id" Type="int" Nullable="false" />
+          <Property Name="Kind_Id" Type="int" Nullable="false" />
+          <Property Name="Condition_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Animal_Material">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Animal_Id" Type="int" Nullable="false" />
+          <Property Name="Material_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Animal_Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Animal_Id" Type="int" Nullable="false" />
+          <Property Name="Product_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AnimalKind">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Aviary">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="AnimalCount" Type="int" Nullable="false" />
+          <Property Name="Temperature_Id" Type="int" Nullable="false" />
+          <Property Name="Cleaned" Type="bit" Nullable="false" />
+          <Property Name="Cooled" Type="bit" />
+          <Property Name="Type_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="CareMaterial">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ConditionAccommodation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MinTemp" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="MaxTemp" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoolingMethod">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CoolingFacility" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Temperature">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DayTime" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Value" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Temperature_Method">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Temperature_Id" Type="int" Nullable="false" />
+          <Property Name="Method_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeAviary">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Role_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User_Aviary">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_Id" Type="int" Nullable="false" />
+          <Property Name="Aviary_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Account_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Animal_AnimalKind">
+          <End Role="AnimalKind" Type="Self.AnimalKind" Multiplicity="1" />
+          <End Role="Animal" Type="Self.Animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnimalKind">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Animal">
+              <PropertyRef Name="Kind_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Animal_Aviary">
+          <End Role="Aviary" Type="Self.Aviary" Multiplicity="1" />
+          <End Role="Animal" Type="Self.Animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aviary">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Animal">
+              <PropertyRef Name="Aviary_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Animal_ConditionAccommodation">
+          <End Role="ConditionAccommodation" Type="Self.ConditionAccommodation" Multiplicity="1" />
+          <End Role="Animal" Type="Self.Animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConditionAccommodation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Animal">
+              <PropertyRef Name="Condition_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Animal_Material_Animal">
+          <End Role="Animal" Type="Self.Animal" Multiplicity="1" />
+          <End Role="Animal_Material" Type="Self.Animal_Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Animal_Material">
+              <PropertyRef Name="Animal_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Animal_Material_CareMaterial">
+          <End Role="CareMaterial" Type="Self.CareMaterial" Multiplicity="1" />
+          <End Role="Animal_Material" Type="Self.Animal_Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CareMaterial">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Animal_Material">
+              <PropertyRef Name="Material_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Animal_Meal_Animal">
+          <End Role="Animal" Type="Self.Animal" Multiplicity="1" />
+          <End Role="Animal_Product" Type="Self.Animal_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Animal_Product">
+              <PropertyRef Name="Animal_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Animal_Product_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Animal_Product" Type="Self.Animal_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Animal_Product">
+              <PropertyRef Name="Product_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Aviary_Temperature">
+          <End Role="Temperature" Type="Self.Temperature" Multiplicity="1" />
+          <End Role="Aviary" Type="Self.Aviary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Temperature">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Aviary">
+              <PropertyRef Name="Temperature_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Aviary_TypeAviary">
+          <End Role="TypeAviary" Type="Self.TypeAviary" Multiplicity="0..1" />
+          <End Role="Aviary" Type="Self.Aviary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeAviary">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Aviary">
+              <PropertyRef Name="Type_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Temperature_Method_CoolingMethod">
+          <End Role="CoolingMethod" Type="Self.CoolingMethod" Multiplicity="1" />
+          <End Role="Temperature_Method" Type="Self.Temperature_Method" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoolingMethod">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Temperature_Method">
+              <PropertyRef Name="Method_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Temperature_Method_Temperature">
+          <End Role="Temperature" Type="Self.Temperature" Multiplicity="1" />
+          <End Role="Temperature_Method" Type="Self.Temperature_Method" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Temperature">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Temperature_Method">
+              <PropertyRef Name="Temperature_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Aviary_Aviary">
+          <End Role="Aviary" Type="Self.Aviary" Multiplicity="1" />
+          <End Role="User_Aviary" Type="Self.User_Aviary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aviary">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User_Aviary">
+              <PropertyRef Name="Aviary_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Aviary_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="User_Aviary" Type="Self.User_Aviary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User_Aviary">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="Role_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище AnimalsZooModelContainer">
+          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Animal" EntityType="Self.Animal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Animal_Material" EntityType="Self.Animal_Material" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Animal_Product" EntityType="Self.Animal_Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AnimalKind" EntityType="Self.AnimalKind" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Aviary" EntityType="Self.Aviary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CareMaterial" EntityType="Self.CareMaterial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConditionAccommodation" EntityType="Self.ConditionAccommodation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoolingMethod" EntityType="Self.CoolingMethod" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Temperature" EntityType="Self.Temperature" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Temperature_Method" EntityType="Self.Temperature_Method" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeAviary" EntityType="Self.TypeAviary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_Aviary" EntityType="Self.User_Aviary" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Account_User" Association="Self.FK_Account_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Animal_AnimalKind" Association="Self.FK_Animal_AnimalKind">
+            <End Role="AnimalKind" EntitySet="AnimalKind" />
+            <End Role="Animal" EntitySet="Animal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Animal_Aviary" Association="Self.FK_Animal_Aviary">
+            <End Role="Aviary" EntitySet="Aviary" />
+            <End Role="Animal" EntitySet="Animal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Animal_ConditionAccommodation" Association="Self.FK_Animal_ConditionAccommodation">
+            <End Role="ConditionAccommodation" EntitySet="ConditionAccommodation" />
+            <End Role="Animal" EntitySet="Animal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Animal_Material_Animal" Association="Self.FK_Animal_Material_Animal">
+            <End Role="Animal" EntitySet="Animal" />
+            <End Role="Animal_Material" EntitySet="Animal_Material" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Animal_Material_CareMaterial" Association="Self.FK_Animal_Material_CareMaterial">
+            <End Role="CareMaterial" EntitySet="CareMaterial" />
+            <End Role="Animal_Material" EntitySet="Animal_Material" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Animal_Meal_Animal" Association="Self.FK_Animal_Meal_Animal">
+            <End Role="Animal" EntitySet="Animal" />
+            <End Role="Animal_Product" EntitySet="Animal_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Animal_Product_Product" Association="Self.FK_Animal_Product_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Animal_Product" EntitySet="Animal_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Aviary_Temperature" Association="Self.FK_Aviary_Temperature">
+            <End Role="Temperature" EntitySet="Temperature" />
+            <End Role="Aviary" EntitySet="Aviary" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Aviary_TypeAviary" Association="Self.FK_Aviary_TypeAviary">
+            <End Role="TypeAviary" EntitySet="TypeAviary" />
+            <End Role="Aviary" EntitySet="Aviary" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Temperature_Method_CoolingMethod" Association="Self.FK_Temperature_Method_CoolingMethod">
+            <End Role="CoolingMethod" EntitySet="CoolingMethod" />
+            <End Role="Temperature_Method" EntitySet="Temperature_Method" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Temperature_Method_Temperature" Association="Self.FK_Temperature_Method_Temperature">
+            <End Role="Temperature" EntitySet="Temperature" />
+            <End Role="Temperature_Method" EntitySet="Temperature_Method" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Aviary_Aviary" Association="Self.FK_User_Aviary_Aviary">
+            <End Role="Aviary" EntitySet="Aviary" />
+            <End Role="User_Aviary" EntitySet="User_Aviary" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Aviary_User" Association="Self.FK_User_Aviary_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="User_Aviary" EntitySet="User_Aviary" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AnimalsZooModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="User_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Account_User" FromRole="Account" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Animal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Aviary_Id" Type="Int32" Nullable="false" />
+          <Property Name="Kind_Id" Type="Int32" Nullable="false" />
+          <Property Name="Condition_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AnimalKind" Relationship="Self.FK_Animal_AnimalKind" FromRole="Animal" ToRole="AnimalKind" />
+          <NavigationProperty Name="Aviary" Relationship="Self.FK_Animal_Aviary" FromRole="Animal" ToRole="Aviary" />
+          <NavigationProperty Name="ConditionAccommodation" Relationship="Self.FK_Animal_ConditionAccommodation" FromRole="Animal" ToRole="ConditionAccommodation" />
+          <NavigationProperty Name="Animal_Material" Relationship="Self.FK_Animal_Material_Animal" FromRole="Animal" ToRole="Animal_Material" />
+          <NavigationProperty Name="Animal_Product" Relationship="Self.FK_Animal_Meal_Animal" FromRole="Animal" ToRole="Animal_Product" />
+        </EntityType>
+        <EntityType Name="Animal_Material">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Animal_Id" Type="Int32" Nullable="false" />
+          <Property Name="Material_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Animal" Relationship="Self.FK_Animal_Material_Animal" FromRole="Animal_Material" ToRole="Animal" />
+          <NavigationProperty Name="CareMaterial" Relationship="Self.FK_Animal_Material_CareMaterial" FromRole="Animal_Material" ToRole="CareMaterial" />
+        </EntityType>
+        <EntityType Name="Animal_Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Animal_Id" Type="Int32" Nullable="false" />
+          <Property Name="Product_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Animal" Relationship="Self.FK_Animal_Meal_Animal" FromRole="Animal_Product" ToRole="Animal" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Animal_Product_Product" FromRole="Animal_Product" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="AnimalKind">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Animal" Relationship="Self.FK_Animal_AnimalKind" FromRole="AnimalKind" ToRole="Animal" />
+        </EntityType>
+        <EntityType Name="Aviary">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="AnimalCount" Type="Int32" Nullable="false" />
+          <Property Name="Temperature_Id" Type="Int32" Nullable="false" />
+          <Property Name="Cleaned" Type="Boolean" Nullable="false" />
+          <Property Name="Cooled" Type="Boolean" />
+          <Property Name="Type_Id" Type="Int32" />
+          <NavigationProperty Name="Animal" Relationship="Self.FK_Animal_Aviary" FromRole="Aviary" ToRole="Animal" />
+          <NavigationProperty Name="Temperature" Relationship="Self.FK_Aviary_Temperature" FromRole="Aviary" ToRole="Temperature" />
+          <NavigationProperty Name="TypeAviary" Relationship="Self.FK_Aviary_TypeAviary" FromRole="Aviary" ToRole="TypeAviary" />
+          <NavigationProperty Name="User_Aviary" Relationship="Self.FK_User_Aviary_Aviary" FromRole="Aviary" ToRole="User_Aviary" />
+        </EntityType>
+        <EntityType Name="CareMaterial">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Animal_Material" Relationship="Self.FK_Animal_Material_CareMaterial" FromRole="CareMaterial" ToRole="Animal_Material" />
+        </EntityType>
+        <EntityType Name="ConditionAccommodation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MinTemp" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="MaxTemp" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Animal" Relationship="Self.FK_Animal_ConditionAccommodation" FromRole="ConditionAccommodation" ToRole="Animal" />
+        </EntityType>
+        <EntityType Name="CoolingMethod">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CoolingFacility" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Temperature_Method" Relationship="Self.FK_Temperature_Method_CoolingMethod" FromRole="CoolingMethod" ToRole="Temperature_Method" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Animal_Product" Relationship="Self.FK_Animal_Product_Product" FromRole="Product" ToRole="Animal_Product" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Temperature">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DayTime" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Value" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Aviary" Relationship="Self.FK_Aviary_Temperature" FromRole="Temperature" ToRole="Aviary" />
+          <NavigationProperty Name="Temperature_Method" Relationship="Self.FK_Temperature_Method_Temperature" FromRole="Temperature" ToRole="Temperature_Method" />
+        </EntityType>
+        <EntityType Name="Temperature_Method">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Temperature_Id" Type="Int32" Nullable="false" />
+          <Property Name="Method_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CoolingMethod" Relationship="Self.FK_Temperature_Method_CoolingMethod" FromRole="Temperature_Method" ToRole="CoolingMethod" />
+          <NavigationProperty Name="Temperature" Relationship="Self.FK_Temperature_Method_Temperature" FromRole="Temperature_Method" ToRole="Temperature" />
+        </EntityType>
+        <EntityType Name="TypeAviary">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Aviary" Relationship="Self.FK_Aviary_TypeAviary" FromRole="TypeAviary" ToRole="Aviary" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Role_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Account_User" FromRole="User" ToRole="Account" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="User_Aviary" Relationship="Self.FK_User_Aviary_User" FromRole="User" ToRole="User_Aviary" />
+        </EntityType>
+        <EntityType Name="User_Aviary">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_Id" Type="Int32" Nullable="false" />
+          <Property Name="Aviary_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Aviary" Relationship="Self.FK_User_Aviary_Aviary" FromRole="User_Aviary" ToRole="Aviary" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Aviary_User" FromRole="User_Aviary" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Account_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Animal_AnimalKind">
+          <End Role="AnimalKind" Type="Self.AnimalKind" Multiplicity="1" />
+          <End Role="Animal" Type="Self.Animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnimalKind">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Animal">
+              <PropertyRef Name="Kind_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Animal_Aviary">
+          <End Role="Aviary" Type="Self.Aviary" Multiplicity="1" />
+          <End Role="Animal" Type="Self.Animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aviary">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Animal">
+              <PropertyRef Name="Aviary_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Animal_ConditionAccommodation">
+          <End Role="ConditionAccommodation" Type="Self.ConditionAccommodation" Multiplicity="1" />
+          <End Role="Animal" Type="Self.Animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConditionAccommodation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Animal">
+              <PropertyRef Name="Condition_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Animal_Material_Animal">
+          <End Role="Animal" Type="Self.Animal" Multiplicity="1" />
+          <End Role="Animal_Material" Type="Self.Animal_Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Animal_Material">
+              <PropertyRef Name="Animal_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Animal_Meal_Animal">
+          <End Role="Animal" Type="Self.Animal" Multiplicity="1" />
+          <End Role="Animal_Product" Type="Self.Animal_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Animal_Product">
+              <PropertyRef Name="Animal_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Animal_Material_CareMaterial">
+          <End Role="CareMaterial" Type="Self.CareMaterial" Multiplicity="1" />
+          <End Role="Animal_Material" Type="Self.Animal_Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CareMaterial">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Animal_Material">
+              <PropertyRef Name="Material_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Animal_Product_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Animal_Product" Type="Self.Animal_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Animal_Product">
+              <PropertyRef Name="Product_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Aviary_Temperature">
+          <End Role="Temperature" Type="Self.Temperature" Multiplicity="1" />
+          <End Role="Aviary" Type="Self.Aviary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Temperature">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Aviary">
+              <PropertyRef Name="Temperature_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Aviary_TypeAviary">
+          <End Role="TypeAviary" Type="Self.TypeAviary" Multiplicity="0..1" />
+          <End Role="Aviary" Type="Self.Aviary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeAviary">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Aviary">
+              <PropertyRef Name="Type_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Aviary_Aviary">
+          <End Role="Aviary" Type="Self.Aviary" Multiplicity="1" />
+          <End Role="User_Aviary" Type="Self.User_Aviary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aviary">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User_Aviary">
+              <PropertyRef Name="Aviary_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Temperature_Method_CoolingMethod">
+          <End Role="CoolingMethod" Type="Self.CoolingMethod" Multiplicity="1" />
+          <End Role="Temperature_Method" Type="Self.Temperature_Method" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoolingMethod">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Temperature_Method">
+              <PropertyRef Name="Method_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="Role_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Temperature_Method_Temperature">
+          <End Role="Temperature" Type="Self.Temperature" Multiplicity="1" />
+          <End Role="Temperature_Method" Type="Self.Temperature_Method" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Temperature">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Temperature_Method">
+              <PropertyRef Name="Temperature_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Aviary_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="User_Aviary" Type="Self.User_Aviary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User_Aviary">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AnimalsZooEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Account" EntityType="Self.Account" />
+          <EntitySet Name="Animal" EntityType="Self.Animal" />
+          <EntitySet Name="Animal_Material" EntityType="Self.Animal_Material" />
+          <EntitySet Name="Animal_Product" EntityType="Self.Animal_Product" />
+          <EntitySet Name="AnimalKind" EntityType="Self.AnimalKind" />
+          <EntitySet Name="Aviary" EntityType="Self.Aviary" />
+          <EntitySet Name="CareMaterial" EntityType="Self.CareMaterial" />
+          <EntitySet Name="ConditionAccommodation" EntityType="Self.ConditionAccommodation" />
+          <EntitySet Name="CoolingMethod" EntityType="Self.CoolingMethod" />
+          <EntitySet Name="Product" EntityType="Self.Product" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="Temperature" EntityType="Self.Temperature" />
+          <EntitySet Name="Temperature_Method" EntityType="Self.Temperature_Method" />
+          <EntitySet Name="TypeAviary" EntityType="Self.TypeAviary" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <EntitySet Name="User_Aviary" EntityType="Self.User_Aviary" />
+          <AssociationSet Name="FK_Account_User" Association="Self.FK_Account_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Animal_AnimalKind" Association="Self.FK_Animal_AnimalKind">
+            <End Role="AnimalKind" EntitySet="AnimalKind" />
+            <End Role="Animal" EntitySet="Animal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Animal_Aviary" Association="Self.FK_Animal_Aviary">
+            <End Role="Aviary" EntitySet="Aviary" />
+            <End Role="Animal" EntitySet="Animal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Animal_ConditionAccommodation" Association="Self.FK_Animal_ConditionAccommodation">
+            <End Role="ConditionAccommodation" EntitySet="ConditionAccommodation" />
+            <End Role="Animal" EntitySet="Animal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Animal_Material_Animal" Association="Self.FK_Animal_Material_Animal">
+            <End Role="Animal" EntitySet="Animal" />
+            <End Role="Animal_Material" EntitySet="Animal_Material" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Animal_Meal_Animal" Association="Self.FK_Animal_Meal_Animal">
+            <End Role="Animal" EntitySet="Animal" />
+            <End Role="Animal_Product" EntitySet="Animal_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Animal_Material_CareMaterial" Association="Self.FK_Animal_Material_CareMaterial">
+            <End Role="CareMaterial" EntitySet="CareMaterial" />
+            <End Role="Animal_Material" EntitySet="Animal_Material" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Animal_Product_Product" Association="Self.FK_Animal_Product_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Animal_Product" EntitySet="Animal_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Aviary_Temperature" Association="Self.FK_Aviary_Temperature">
+            <End Role="Temperature" EntitySet="Temperature" />
+            <End Role="Aviary" EntitySet="Aviary" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Aviary_TypeAviary" Association="Self.FK_Aviary_TypeAviary">
+            <End Role="TypeAviary" EntitySet="TypeAviary" />
+            <End Role="Aviary" EntitySet="Aviary" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Aviary_Aviary" Association="Self.FK_User_Aviary_Aviary">
+            <End Role="Aviary" EntitySet="Aviary" />
+            <End Role="User_Aviary" EntitySet="User_Aviary" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Temperature_Method_CoolingMethod" Association="Self.FK_Temperature_Method_CoolingMethod">
+            <End Role="CoolingMethod" EntitySet="CoolingMethod" />
+            <End Role="Temperature_Method" EntitySet="Temperature_Method" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Temperature_Method_Temperature" Association="Self.FK_Temperature_Method_Temperature">
+            <End Role="Temperature" EntitySet="Temperature" />
+            <End Role="Temperature_Method" EntitySet="Temperature_Method" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Aviary_User" Association="Self.FK_User_Aviary_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="User_Aviary" EntitySet="User_Aviary" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище AnimalsZooModelContainer" CdmEntityContainer="AnimalsZooEntities">
+          <EntitySetMapping Name="Account">
+            <EntityTypeMapping TypeName="AnimalsZooModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Animal">
+            <EntityTypeMapping TypeName="AnimalsZooModel.Animal">
+              <MappingFragment StoreEntitySet="Animal">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Aviary_Id" ColumnName="Aviary_Id" />
+                <ScalarProperty Name="Kind_Id" ColumnName="Kind_Id" />
+                <ScalarProperty Name="Condition_Id" ColumnName="Condition_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Animal_Material">
+            <EntityTypeMapping TypeName="AnimalsZooModel.Animal_Material">
+              <MappingFragment StoreEntitySet="Animal_Material">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Animal_Id" ColumnName="Animal_Id" />
+                <ScalarProperty Name="Material_Id" ColumnName="Material_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Animal_Product">
+            <EntityTypeMapping TypeName="AnimalsZooModel.Animal_Product">
+              <MappingFragment StoreEntitySet="Animal_Product">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Animal_Id" ColumnName="Animal_Id" />
+                <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AnimalKind">
+            <EntityTypeMapping TypeName="AnimalsZooModel.AnimalKind">
+              <MappingFragment StoreEntitySet="AnimalKind">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Aviary">
+            <EntityTypeMapping TypeName="AnimalsZooModel.Aviary">
+              <MappingFragment StoreEntitySet="Aviary">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AnimalCount" ColumnName="AnimalCount" />
+                <ScalarProperty Name="Temperature_Id" ColumnName="Temperature_Id" />
+                <ScalarProperty Name="Cleaned" ColumnName="Cleaned" />
+                <ScalarProperty Name="Cooled" ColumnName="Cooled" />
+                <ScalarProperty Name="Type_Id" ColumnName="Type_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CareMaterial">
+            <EntityTypeMapping TypeName="AnimalsZooModel.CareMaterial">
+              <MappingFragment StoreEntitySet="CareMaterial">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConditionAccommodation">
+            <EntityTypeMapping TypeName="AnimalsZooModel.ConditionAccommodation">
+              <MappingFragment StoreEntitySet="ConditionAccommodation">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MinTemp" ColumnName="MinTemp" />
+                <ScalarProperty Name="MaxTemp" ColumnName="MaxTemp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoolingMethod">
+            <EntityTypeMapping TypeName="AnimalsZooModel.CoolingMethod">
+              <MappingFragment StoreEntitySet="CoolingMethod">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CoolingFacility" ColumnName="CoolingFacility" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="AnimalsZooModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="AnimalsZooModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Temperature">
+            <EntityTypeMapping TypeName="AnimalsZooModel.Temperature">
+              <MappingFragment StoreEntitySet="Temperature">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DayTime" ColumnName="DayTime" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Temperature_Method">
+            <EntityTypeMapping TypeName="AnimalsZooModel.Temperature_Method">
+              <MappingFragment StoreEntitySet="Temperature_Method">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Temperature_Id" ColumnName="Temperature_Id" />
+                <ScalarProperty Name="Method_Id" ColumnName="Method_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeAviary">
+            <EntityTypeMapping TypeName="AnimalsZooModel.TypeAviary">
+              <MappingFragment StoreEntitySet="TypeAviary">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="AnimalsZooModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Role_Id" ColumnName="Role_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_Aviary">
+            <EntityTypeMapping TypeName="AnimalsZooModel.User_Aviary">
+              <MappingFragment StoreEntitySet="User_Aviary">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="Aviary_Id" ColumnName="Aviary_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
