@@ -24,7 +24,7 @@ namespace AnimalsZoo.Windows.UserWindows
         {
             InitializeComponent();
             ListAviary.ItemsSource = App.Connection.Aviary.ToList();
-            tbDate.Text = DateTime.Now.Date.ToString();
+            tbDate.Text = DateTime.Today.ToString();
         }
 
         private void Select(object sender, SelectionChangedEventArgs e)
@@ -33,13 +33,7 @@ namespace AnimalsZoo.Windows.UserWindows
             aviary.Cleaned = true;
             aviary.Cooled = true;
             App.Connection.SaveChanges();
-        }
-
-        private void BackBtn_Click(object sender, RoutedEventArgs e)
-        {
-            ZooengineerWindow zooengineerWindow = new ZooengineerWindow(); 
-            zooengineerWindow.Show();
-            this.Close();
+            ListAviary.Items.Refresh();
         }
     }
 }

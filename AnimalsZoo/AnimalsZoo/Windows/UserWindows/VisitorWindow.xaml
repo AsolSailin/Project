@@ -18,13 +18,20 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <StackPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">
+            <Image Source="\Images\zoo.ico" Width="200"></Image>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="2" VerticalAlignment="Center">
+            <Image Source="\Images\zoo.ico" Width="200"></Image>
+        </StackPanel>
+        
         <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
             <TextBlock Text="Date"></TextBlock>
             <TextBox x:Name="tbDate" Height="30"></TextBox>
             <TextBlock Text="Number of tickets"></TextBlock>
             <PasswordBox x:Name="tbCount" Height="30"></PasswordBox>
             <Button Height="30" Click="BuyBtn_Click" Content="Buy" Width="100"></Button>
-            <Button Height="30" Click="BackBtn_Click" Content="Back" Width="100"></Button>
+            <Button Height="30" Click="BackBtn_Click" Content="Exit" Width="100"></Button>
         </StackPanel>
     </Grid>
 </Window>

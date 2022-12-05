@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AnimalsZoo.Windows.GeneralWindows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,7 +32,9 @@ namespace AnimalsZoo.Windows.UserWindows
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            AuthorizationWindow authorizationWindow = new AuthorizationWindow();
+            authorizationWindow.Show();
+            this.Close();
         }
     }
 }

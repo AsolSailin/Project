@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AnimalsZoo.ADOApp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +24,12 @@ namespace AnimalsZoo.Windows.UserWindows
         {
             InitializeComponent();
             ListAviary.ItemsSource = App.Connection.Aviary.ToList();
-            ListAnimal.ItemsSource = App.Connection.Animal.ToList();
+        }
+
+        private void Select(object sender, SelectionChangedEventArgs e)
+        {
+            var aviary = ListAviary.SelectedItem as Aviary;
+            ListAnimal.ItemsSource = App.Connection.Animal.Where(x => x.Aviary_Id == aviary.Id).ToList();
         }
 
         private void FeedingBtn_Click(object sender, RoutedEventArgs e)

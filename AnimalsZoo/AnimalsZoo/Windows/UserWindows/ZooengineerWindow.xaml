@@ -39,16 +39,16 @@
             </Button>
         </StackPanel>
 
-        <ScrollViewer Grid.Column="0" Grid.Row="0">
-            <StackPanel Grid.Column="0" Grid.Row="0">
-                <ListView x:Name="ListAviary">
+        <ScrollViewer Grid.Column="0" Grid.Row="0" Margin="10,10,10,10">
+            <StackPanel>
+                <ListView x:Name="ListAviary" SelectionChanged="Select">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <StackPanel>
                                         <TextBlock>
-                                            <Run Text="Name | "></Run>
+                                            <Run Text="Name   |   "></Run>
                                         </TextBlock>
                                         <TextBlock>
                                             <Run Text="{Binding Name}"></Run>
@@ -56,18 +56,10 @@
                                     </StackPanel>
                                     <StackPanel>
                                         <TextBlock>
-                                            <Run Text="Number of animals | "></Run>
+                                            <Run Text="Number of animals"></Run>
                                         </TextBlock>
                                         <TextBlock>
                                             <Run Text="{Binding AnimalCount}"></Run>
-                                        </TextBlock>
-                                    </StackPanel>
-                                    <StackPanel>
-                                        <TextBlock>
-                                            <Run Text="Temperature | "></Run>
-                                        </TextBlock>
-                                        <TextBlock>
-                                            <Run Text="{Binding Temperature.Value}"></Run>
                                         </TextBlock>
                                     </StackPanel>
                                 </StackPanel>
@@ -78,8 +70,8 @@
             </StackPanel>
         </ScrollViewer>
 
-        <ScrollViewer Grid.Column="0" Grid.Row="1">
-            <StackPanel Grid.Column="0" Grid.Row="1">
+        <ScrollViewer Grid.Column="0" Grid.Row="1" Margin="10,10,10,10">
+            <StackPanel>
                 <ListView x:Name="ListAnimal">
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -87,15 +79,16 @@
                                 <StackPanel Orientation="Horizontal">
                                     <StackPanel>
                                         <TextBlock>
-                                            <Run Text="Name | "></Run>
+                                            <Run Text="Name   |   "></Run>
                                         </TextBlock>
                                         <TextBlock>
                                             <Run Text="{Binding Name}"></Run>
+                                            <Run Text="  "></Run>
                                         </TextBlock>
                                     </StackPanel>
                                     <StackPanel>
                                         <TextBlock>
-                                            <Run Text="Kind | "></Run>
+                                            <Run Text="Kind   |   "></Run>
                                         </TextBlock>
                                         <TextBlock>
                                             <Run Text="{Binding AnimalKind.Name}"></Run>
@@ -103,7 +96,7 @@
                                     </StackPanel>
                                     <StackPanel>
                                         <TextBlock>
-                                            <Run Text="Min temperature | "></Run>
+                                            <Run Text="Min temperature   |   "></Run>
                                         </TextBlock>
                                         <TextBlock>
                                             <Run Text="{Binding ConditionAccommodation.MinTemp}"></Run>
@@ -111,7 +104,7 @@
                                     </StackPanel>
                                     <StackPanel>
                                         <TextBlock>
-                                            <Run Text="Max temperature | "></Run>
+                                            <Run Text="Max temperature"></Run>
                                         </TextBlock>
                                         <TextBlock>
                                             <Run Text="{Binding ConditionAccommodation.MaxTemp}"></Run>

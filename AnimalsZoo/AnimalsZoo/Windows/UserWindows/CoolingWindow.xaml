@@ -17,13 +17,9 @@
             <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
 
-        <Button Grid.Column="2" Grid.Row="0" Click="BackBtn_Click" Height="30" Width="50" Margin="199,13,18,29">
-            <TextBlock Text="Back" TextWrapping="Wrap" TextAlignment="Center"/>
-        </Button>
-        
         <StackPanel Grid.Column="2" Grid.Row="1" VerticalAlignment="Top" Margin="0,31,0,0">
             <TextBlock Text="Colling method"></TextBlock>
-            <ListView x:Name="tbMethod">
+            <ListView x:Name="ListMethod">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextBlock>
@@ -52,7 +48,7 @@
                                 <StackPanel Orientation="Horizontal">
                                     <StackPanel>
                                         <TextBlock>
-                                            <Run Text="Name | "></Run>
+                                            <Run Text="Name   |   "></Run>
                                         </TextBlock>
                                         <TextBlock>
                                             <Run Text="{Binding Name}"></Run>
@@ -60,7 +56,7 @@
                                     </StackPanel>
                                     <StackPanel>
                                         <TextBlock>
-                                            <Run Text="Number of animals | "></Run>
+                                            <Run Text="Number of animals"></Run>
                                         </TextBlock>
                                         <TextBlock>
                                             <Run Text="{Binding AnimalCount}"></Run>

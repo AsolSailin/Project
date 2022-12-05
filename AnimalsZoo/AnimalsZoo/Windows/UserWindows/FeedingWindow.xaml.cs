@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AnimalsZoo.ADOApp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,18 +23,30 @@ namespace AnimalsZoo.Windows.UserWindows
         public FeedingWindow()
         {
             InitializeComponent();
+            ListAviary.ItemsSource = App.Connection.Aviary.ToList();
+            ListProduct.ItemsSource = App.Connection.Product.ToList();
+            tbDate.Text = DateTime.Today.ToString();
+        }
+
+        private void Select(object sender, SelectionChangedEventArgs e)
+        {
+            var aviary = ListAviary.SelectedItem as Aviary;
+            ListAnimal.ItemsSource = App.Connection.Animal.Where(x => x.Aviary_Id == aviary.Id).ToList();
         }
 
         private void FeedingBtn_Click(object sender, RoutedEventArgs e)
         {
+            var animal = ListAnimal.SelectedItem as Animal;
+            var product = ListProduct.SelectedItem as Product;
 
-        }
+            var animalProduct = new Animal_Product()
+            {
+                Animal_Id = animal.Id,
+                Product_Id = product.Id
+            };
 
-        private void BackBtn_Click(object sender, RoutedEventArgs e)
-        {
-            ZooengineerWindow zooengineerWindow = new ZooengineerWindow();
-            zooengineerWindow.Show();
-            this.Close();
+            App.Connection.SaveChanges();
+            MessageBox.Show("Changes saved successfully!");
         }
     }
 }

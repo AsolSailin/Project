@@ -14,10 +14,17 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="5*"/>
+            <RowDefinition Height="3*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <StackPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">
+            <Image Source="\Images\zoo.ico" Width="200"></Image>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="2" VerticalAlignment="Center">
+            <Image Source="\Images\zoo.ico" Width="200"></Image>
+        </StackPanel>
+        
         <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
             <TextBlock Text="Login"></TextBlock>
             <TextBox x:Name="tbLogin" Height="30"></TextBox>

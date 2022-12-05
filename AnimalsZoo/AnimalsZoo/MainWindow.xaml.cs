@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AnimalsZoo.Windows.GeneralWindows;
+using AnimalsZoo.Windows.UserWindows;
 
 namespace AnimalsZoo
 {

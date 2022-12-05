@@ -18,13 +18,9 @@
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
 
-        <Button Grid.Column="2" Grid.Row="0" Click="BackBtn_Click" Height="30" Width="50" Margin="199,13,18,29">
-            <TextBlock Text="Back" TextWrapping="Wrap" TextAlignment="Center"/>
-        </Button>
-        
         <StackPanel Grid.Column="2" VerticalAlignment="Top" Margin="0,62,0,0" Grid.RowSpan="2">
             <TextBlock Text="Products"/>
-            <ListView x:Name="tbProduct">
+            <ListView x:Name="ListProduct">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
@@ -44,16 +40,16 @@
             <TextBox x:Name="tbDate" Height="30"></TextBox>
         </StackPanel>
 
-        <ScrollViewer Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">
+        <ScrollViewer Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="5,5,5,5">
             <StackPanel>
-                <ListView x:Name="ListAviary">
+                <ListView x:Name="ListAviary" SelectionChanged="Select">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <StackPanel>
                                         <TextBlock>
-                                            <Run Text="Name | "></Run>
+                                            <Run Text="Name   |   "></Run>
                                         </TextBlock>
                                         <TextBlock>
                                             <Run Text="{Binding Name}"></Run>
@@ -61,7 +57,7 @@
                                     </StackPanel>
                                     <StackPanel>
                                         <TextBlock>
-                                            <Run Text="Number of animals | "></Run>
+                                            <Run Text="Number of animals   |   "></Run>
                                         </TextBlock>
                                         <TextBlock>
                                             <Run Text="{Binding AnimalCount}"></Run>
@@ -69,7 +65,7 @@
                                     </StackPanel>
                                     <StackPanel>
                                         <TextBlock>
-                                            <Run Text="Temperature | "></Run>
+                                            <Run Text="Temperature"></Run>
                                         </TextBlock>
                                         <TextBlock>
                                             <Run Text="{Binding Temperature.Value}"></Run>
@@ -83,7 +79,7 @@
             </StackPanel>
         </ScrollViewer>
 
-        <ScrollViewer Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2">
+        <ScrollViewer Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Margin="5,5,5,5">
             <StackPanel>
                 <ListView x:Name="ListAnimal">
                     <ListView.ItemTemplate>
@@ -92,7 +88,7 @@
                                 <StackPanel Orientation="Horizontal">
                                     <StackPanel>
                                         <TextBlock>
-                                            <Run Text="Name | "></Run>
+                                            <Run Text="Name   |   "></Run>
                                         </TextBlock>
                                         <TextBlock>
                                             <Run Text="{Binding Name}"></Run>
@@ -100,7 +96,7 @@
                                     </StackPanel>
                                     <StackPanel>
                                         <TextBlock>
-                                            <Run Text="Kind | "></Run>
+                                            <Run Text="Kind"></Run>
                                         </TextBlock>
                                         <TextBlock>
                                             <Run Text="{Binding AnimalKind.Name}"></Run>

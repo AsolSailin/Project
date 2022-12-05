@@ -33,18 +33,21 @@ namespace AnimalsZoo.Windows.GeneralWindows
                 && x.Login == tbLogin.Text).FirstOrDefault();
                 if (data != null)
                 {
-                    if (data.User.Role_Id == 1)
-                    {
-                        VisitorWindow visitorWindow = new VisitorWindow();
-                        visitorWindow.Show();
-                        this.Close();
-                    }
-                    else
+                    InitialWindow initialWindow = new InitialWindow(data);
+                    initialWindow.Show();
+                    this.Close();
+                    /*if (data.User.Role_Id == 1)
                     {
                         ZooengineerWindow zooengineerWindow = new ZooengineerWindow();
                         zooengineerWindow.Show();
                         this.Close();
                     }
+                    else
+                    {
+                        VisitorWindow visitorWindow = new VisitorWindow();
+                        visitorWindow.Show();
+                        this.Close();
+                    }*/
                 }
                 else
                 {

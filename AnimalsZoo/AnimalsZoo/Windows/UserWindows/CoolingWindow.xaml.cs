@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AnimalsZoo.ADOApp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,18 +23,40 @@ namespace AnimalsZoo.Windows.UserWindows
         public CoolingWindow()
         {
             InitializeComponent();
+            ListAviary.ItemsSource = App.Connection.Aviary.ToList();
+            ListMethod.ItemsSource = App.Connection.CoolingMethod.ToList();
+
+            /*if (DateTime.Now.Hour > 0)
+            {
+                
+            }
+            else if (DateTime.Now.Hour > 11)
+            {
+
+            }
+            else if (DateTime.Now.Hour > 17)
+            {
+
+            }
+            else if (DateTime.Now.Hour > 21)
+            {
+
+            }*/
         }
 
         private void CollingBtn_Click(object sender, RoutedEventArgs e)
         {
+            var aviary = ListAviary.SelectedItem as Aviary;
+            var method = ListMethod.SelectedItem as CoolingMethod;
 
-        }
+            var tempMethod = new Temperature_Method()
+            {
+               Temperature_Id = aviary.Temperature_Id,
+               Method_Id = method.Id
+            };
 
-        private void BackBtn_Click(object sender, RoutedEventArgs e)
-        {
-            ZooengineerWindow zooengineerWindow = new ZooengineerWindow();
-            zooengineerWindow.Show();
-            this.Close();
+            App.Connection.SaveChanges();
+            MessageBox.Show("Changes saved successfully!");
         }
     }
 }
