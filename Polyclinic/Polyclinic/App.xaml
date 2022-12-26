@@ -1,0 +1,41 @@
+﻿<Application x:Class="Polyclinic.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Polyclinic"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#91b8f2"/>
+            <Setter Property="Foreground" Value="#144da3"/>
+            <Setter Property="Margin" Value="0,7,0,0"/>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Background" Value="#91b8f2"/>
+            <Setter Property="Foreground" Value="#144da3"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="#c1d7f7"/>
+            <Setter Property="Foreground" Value="#144da3"/>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="FontFamily" Value="Rockwell Extra Bold"/>
+            <Setter Property="Background" Value="#c1d7f7"/>
+            <Setter Property="Foreground" Value="#144da3"/>
+        </Style>
+        <Style TargetType="PasswordBox">
+            <Setter Property="Background" Value="#c1d7f7"/>
+            <Setter Property="Foreground" Value="#144da3"/>
+        </Style>
+        <Style TargetType="ListView">
+            <Setter Property="FontFamily" Value="Rockwell Extra Bold"/>
+            <Setter Property="Background" Value="#c1d7f7"/>
+            <Setter Property="Foreground" Value="#144da3"/>
+        </Style>
+        <Style TargetType="Grid">
+            <Setter Property="Background" Value="#edf3fc"/>
+        </Style>
+        <Style TargetType="StackPanel">
+            <Setter Property="Background" Value="#edf3fc"/>
+        </Style>
+    </Application.Resources>
+</Application>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AnimalsZoo.Windows.GeneralWindows"
         mc:Ignorable="d"
-        Title="RegistrationWindow" Height="450" Width="800">
+        Title="Registration" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -20,7 +20,7 @@
 
         <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
             <TextBlock Text="Role"></TextBlock>
-            <ComboBox x:Name="tbRole" Height="30" Text="">
+            <ComboBox x:Name="RoleComboBox" Height="30">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock>
@@ -35,8 +35,20 @@
             <TextBox x:Name="tbLogin" Height="30"></TextBox>
             <TextBlock Text="Password"></TextBlock>
             <TextBox x:Name="tbPassword" Height="30"></TextBox>
-            <Button Height="30" Click="RegBtn_Click" Content="Registration"></Button>
-            <Button Height="30" Click="BackBtn_Click" Content="Back"></Button>
+            <Button Height="30" Click="RegBtn_Click" Content="Sign In">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="20"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button Height="30" Click="BackBtn_Click" Content="Back">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="20"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
         </StackPanel>
     </Grid>
 </Window>

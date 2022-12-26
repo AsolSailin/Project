@@ -25,7 +25,7 @@ namespace AnimalsZoo.Windows.UserWindows
             InitializeComponent();
             ListAviary.ItemsSource = App.Connection.Aviary.ToList();
             ListProduct.ItemsSource = App.Connection.Product.ToList();
-            tbDate.Text = DateTime.Today.ToString();
+            tbDate.Text = DateTime.Today.ToString("dd:MM:yyyy");
         }
 
         private void Select(object sender, SelectionChangedEventArgs e)
@@ -45,6 +45,7 @@ namespace AnimalsZoo.Windows.UserWindows
                 Product_Id = product.Id
             };
 
+            App.Connection.Animal_Product.Add(animalProduct);
             App.Connection.SaveChanges();
             MessageBox.Show("Changes saved successfully!");
         }

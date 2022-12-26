@@ -58,6 +58,11 @@ namespace AnimalsZoo.Windows.UserWindows
                     cleaningWindow.Show();
                     this.Close();
                     break;
+                case 5:
+                    AnimalAddingWindow animalAddingWindow = new AnimalAddingWindow();
+                    animalAddingWindow.Show();
+                    this.Close();
+                    break;
             }
         }
     }

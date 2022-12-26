@@ -36,18 +36,6 @@ namespace AnimalsZoo.Windows.GeneralWindows
                     InitialWindow initialWindow = new InitialWindow(data);
                     initialWindow.Show();
                     this.Close();
-                    /*if (data.User.Role_Id == 1)
-                    {
-                        ZooengineerWindow zooengineerWindow = new ZooengineerWindow();
-                        zooengineerWindow.Show();
-                        this.Close();
-                    }
-                    else
-                    {
-                        VisitorWindow visitorWindow = new VisitorWindow();
-                        visitorWindow.Show();
-                        this.Close();
-                    }*/
                 }
                 else
                 {

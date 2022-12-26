@@ -1,0 +1,69 @@
+﻿<Window x:Class="Polyclinic.Windows.HistoryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Polyclinic.Windows"
+        mc:Ignorable="d"
+        Title="HistoryWindow" Height="450" Width="800">
+    <Grid>
+        <ScrollViewer Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Height="300" Width="700">
+            <StackPanel>
+                <ListView x:Name="MedicalHistory" HorizontalAlignment="Center">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel>
+                                        <TextBlock Width="100">
+                                            <Run Text="Лечение:"></Run>
+                                        </TextBlock>
+                                        <TextBlock Width="100" Background="#edf3fc">
+                                            <Run Text="-----------------------------"></Run>
+                                        </TextBlock>
+                                        <TextBlock Width="100" Background="#edf3fc">
+                                            <Run Text="{Binding Treatment.TreatmentName}"></Run>
+                                        </TextBlock>
+                                    </StackPanel>
+                                    <StackPanel>
+                                        <TextBlock Width="100">
+                                            <Run Text="Врач:"></Run>
+                                        </TextBlock>
+                                        <TextBlock Width="100" Background="#edf3fc">
+                                            <Run Text="-----------------------------"></Run>
+                                        </TextBlock>
+                                        <TextBlock Width="100" Background="#edf3fc">
+                                            <Run Text="{Binding Doctor.Surname}"></Run>
+                                        </TextBlock>
+                                    </StackPanel>
+                                    <StackPanel>
+                                        <TextBlock Width="170">
+                                            <Run Text="Дата заболевания:"></Run>
+                                        </TextBlock>
+                                        <TextBlock Width="170" Background="#edf3fc">
+                                            <Run Text="--------------------------------"></Run>
+                                        </TextBlock>
+                                        <TextBlock Width="100" Background="#edf3fc">
+                                            <Run Text="{Binding DiseaseDate}"></Run>
+                                        </TextBlock>
+                                    </StackPanel>
+                                    <StackPanel>
+                                        <TextBlock Width="170">
+                                            <Run Text="Дата выздоровления:"></Run>
+                                        </TextBlock>
+                                        <TextBlock Width="170" Background="#edf3fc">
+                                            <Run Text="--------------------------------"></Run>
+                                        </TextBlock>
+                                        <TextBlock Width="170" Background="#edf3fc">
+                                            <Run Text="{Binding RecoveryDate}"></Run>
+                                        </TextBlock>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

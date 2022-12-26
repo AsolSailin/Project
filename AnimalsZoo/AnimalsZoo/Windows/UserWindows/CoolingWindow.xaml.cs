@@ -23,25 +23,35 @@ namespace AnimalsZoo.Windows.UserWindows
         public CoolingWindow()
         {
             InitializeComponent();
-            ListAviary.ItemsSource = App.Connection.Aviary.ToList();
+            ListAviary.ItemsSource = App.Connection.Aviary.Where(x => x.Type_Id == 2).ToList();
+
             ListMethod.ItemsSource = App.Connection.CoolingMethod.ToList();
 
-            /*if (DateTime.Now.Hour > 0)
-            {
-                
-            }
-            else if (DateTime.Now.Hour > 11)
-            {
+            string daytime = string.Empty;
 
-            }
-            else if (DateTime.Now.Hour > 17)
+            if (DateTime.Now.Hour >= 0)
             {
-
+                daytime = "Morning";
             }
-            else if (DateTime.Now.Hour > 21)
+            
+            if (DateTime.Now.Hour >= 11)
             {
+                daytime = "Afternoon";
+            }
+            
+            if(DateTime.Now.Hour >= 17)
+            {
+                daytime = "Evening";
+            }
+            
+            if (DateTime.Now.Hour >= 21)
+            {
+                daytime = "Night";
+            }
 
-            }*/
+            var temp = App.Connection.Temperature.FirstOrDefault(x => daytime == x.DayTime);
+            tbTemp.Text = temp.Value.ToString();
+
         }
 
         private void CollingBtn_Click(object sender, RoutedEventArgs e)
@@ -55,6 +65,7 @@ namespace AnimalsZoo.Windows.UserWindows
                Method_Id = method.Id
             };
 
+            App.Connection.Temperature_Method.Add(tempMethod);
             App.Connection.SaveChanges();
             MessageBox.Show("Changes saved successfully!");
         }

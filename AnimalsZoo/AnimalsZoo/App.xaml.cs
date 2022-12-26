@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 using AnimalsZoo.ADOApp;
 
 namespace AnimalsZoo
@@ -15,5 +16,6 @@ namespace AnimalsZoo
     public partial class App : Application
     {
         public static AnimalsZooEntities Connection = new AnimalsZooEntities();
+        public static DispatcherTimer dispatcherTimer = new DispatcherTimer();
     }
 }

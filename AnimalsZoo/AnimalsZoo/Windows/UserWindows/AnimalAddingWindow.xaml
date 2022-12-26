@@ -1,0 +1,71 @@
+﻿<Window x:Class="AnimalsZoo.Windows.UserWindows.AnimalAddingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AnimalsZoo.Windows.UserWindows"
+        mc:Ignorable="d"
+        Title="Animal card" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <Image Source="{Binding Image}" Width="50" Height="50" x:Name="Img"></Image>
+        </StackPanel>
+        
+        <Button Click="PhotoBtn_Click" Grid.ColumnSpan="3" Margin="114,86,343,10" Grid.RowSpan="2" Background="#adffff">
+            <Button.Content>
+                <TextBlock Background="#adffff" Text="Photo" TextWrapping="Wrap" TextAlignment="Center"></TextBlock>
+            </Button.Content>
+        </Button>
+
+        <StackPanel Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Width="300">
+            <TextBlock Text="Name"></TextBlock>
+            <TextBox x:Name="tbName" Height="30"></TextBox>
+            <TextBlock Text="Kind"></TextBlock>
+            <ComboBox x:Name="KindComboBox" Height="30">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <Run Text="{Binding Name}"></Run>
+                        </TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBlock Text="Aviary"></TextBlock>
+            <ComboBox x:Name="AviaryComboBox" Height="30">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <Run Text="{Binding Name}"></Run>
+                        </TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Button Height="30" Click="AddBtn_Click" Content="Add">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="20"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button Height="30" Click="MoreBtn_Click" Content="Add more">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="20"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>

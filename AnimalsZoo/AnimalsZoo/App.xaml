@@ -7,7 +7,7 @@
         <Style TargetType="Button">
             <Setter Property="Background" Value="#00b374"/>
             <Setter Property="Foreground" Value="#004d32"/>
-            <Setter Property="Margin" Value="0,10,0,0"/>
+            <Setter Property="Margin" Value="0,7,0,0"/>
         </Style>
         <Style TargetType="TextBlock">
             <Setter Property="FontFamily" Value="Snap ITC"/>

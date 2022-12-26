@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AnimalsZoo.ADOApp;
 using AnimalsZoo.Windows.GeneralWindows;
 using AnimalsZoo.Windows.UserWindows;
 
@@ -25,9 +26,23 @@ namespace AnimalsZoo
         public MainWindow()
         {
             InitializeComponent();
+
+            App.dispatcherTimer.Tick += new EventHandler(DispatcherTimer_Tick);
+            App.dispatcherTimer.Interval = new TimeSpan(0, 0, 30);
+            App.dispatcherTimer.Start();
+
             AuthorizationWindow authorizationWindow = new AuthorizationWindow();
             authorizationWindow.Show();
             this.Close();
+        }
+
+        private void DispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            foreach (var item in App.Connection.Aviary)
+            {
+                item.Cleaned = false;
+            }
+            App.Connection.SaveChanges();
         }
     }
 }

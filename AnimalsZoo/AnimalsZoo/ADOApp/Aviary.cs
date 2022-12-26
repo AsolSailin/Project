@@ -24,10 +24,10 @@ namespace AnimalsZoo.ADOApp
         public int Id { get; set; }
         public string Name { get; set; }
         public int AnimalCount { get; set; }
-        public int Temperature_Id { get; set; }
         public bool Cleaned { get; set; }
-        public Nullable<bool> Cooled { get; set; }
-        public Nullable<int> Type_Id { get; set; }
+        public bool Cooled { get; set; }
+        public int Type_Id { get; set; }
+        public int Temperature_Id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Animal> Animal { get; set; }

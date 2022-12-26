@@ -24,14 +24,19 @@ namespace AnimalsZoo.Windows.UserWindows
         {
             InitializeComponent();
             ListAviary.ItemsSource = App.Connection.Aviary.ToList();
-            tbDate.Text = DateTime.Today.ToString();
+            tbDate.Text = DateTime.Today.ToString("dd:MM:yyyy");
+            App.dispatcherTimer.Tick += new EventHandler(RefreshAviary);
+        }
+
+        private void RefreshAviary(object sender, EventArgs e)
+        {
+            ListAviary.Items.Refresh();
         }
 
         private void Select(object sender, SelectionChangedEventArgs e)
         {
             var aviary = ListAviary.SelectedItem as Aviary;
             aviary.Cleaned = true;
-            aviary.Cooled = true;
             App.Connection.SaveChanges();
             ListAviary.Items.Refresh();
         }

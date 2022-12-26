@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AnimalsZoo.Windows.UserWindows"
         mc:Ignorable="d"
-        Title="FeedingWindow" Height="450" Width="800">
+        Title="Feeding" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -18,7 +18,7 @@
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Column="2" VerticalAlignment="Top" Margin="0,62,0,0" Grid.RowSpan="2">
+        <StackPanel Grid.Column="2" VerticalAlignment="Top" Margin="10,62,10,0" Grid.RowSpan="2">
             <TextBlock Text="Products"/>
             <ListView x:Name="ListProduct">
                 <ListView.ItemTemplate>
@@ -31,8 +31,13 @@
             </ListView>
         </StackPanel>
 
-        <Button Grid.Column="2" Grid.Row="2" Click="FeedingBtn_Click" Height="30" Width="200" Margin="34,118,33,38">
+        <Button Grid.Column="2" Grid.Row="2" Click="FeedingBtn_Click" Height="30" Width="200" HorizontalAlignment="Center" Margin="0,132,0,0">
             <TextBlock Text="Complete" TextWrapping="Wrap" TextAlignment="Center"/>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Button.Resources>
         </Button>
 
         <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="200" Margin="17,0,0,0">
@@ -42,33 +47,31 @@
 
         <ScrollViewer Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="5,5,5,5">
             <StackPanel>
-                <ListView x:Name="ListAviary" SelectionChanged="Select">
+                <ListView x:Name="ListAviary" SelectionChanged="Select" HorizontalAlignment="Center">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <StackPanel>
-                                        <TextBlock>
-                                            <Run Text="Name   |   "></Run>
+                                        <TextBlock Width="240">
+                                            <Run Text="Name:"></Run>
                                         </TextBlock>
-                                        <TextBlock>
+                                        <TextBlock Width="240" Background="#b3ffe5">
+                                            <Run Text="----------------------------------"></Run>
+                                        </TextBlock>
+                                        <TextBlock Width="240" Background="#b3ffe5">
                                             <Run Text="{Binding Name}"></Run>
                                         </TextBlock>
                                     </StackPanel>
                                     <StackPanel>
-                                        <TextBlock>
-                                            <Run Text="Number of animals   |   "></Run>
+                                        <TextBlock Width="240">
+                                            <Run Text="Number of animals:"></Run>
                                         </TextBlock>
-                                        <TextBlock>
+                                        <TextBlock Width="240" Background="#b3ffe5">
+                                            <Run Text="----------------------------------"></Run>
+                                        </TextBlock>
+                                        <TextBlock Width="240" Background="#b3ffe5">
                                             <Run Text="{Binding AnimalCount}"></Run>
-                                        </TextBlock>
-                                    </StackPanel>
-                                    <StackPanel>
-                                        <TextBlock>
-                                            <Run Text="Temperature"></Run>
-                                        </TextBlock>
-                                        <TextBlock>
-                                            <Run Text="{Binding Temperature.Value}"></Run>
                                         </TextBlock>
                                     </StackPanel>
                                 </StackPanel>
@@ -81,24 +84,40 @@
 
         <ScrollViewer Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Margin="5,5,5,5">
             <StackPanel>
-                <ListView x:Name="ListAnimal">
+                <ListView x:Name="ListAnimal" HorizontalAlignment="Center">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <StackPanel>
-                                        <TextBlock>
-                                            <Run Text="Name   |   "></Run>
+                                        <TextBlock Width="160">
+                                            <Run Text="Photo:"></Run>
                                         </TextBlock>
-                                        <TextBlock>
+                                        <TextBlock Width="160" Background="#b3ffe5">
+                                            <Run Text="-----------------------------------"></Run>
+                                        </TextBlock>
+                                        <Image Source="{Binding Image}" Width="150" Height="100"></Image>
+                                    </StackPanel>
+                                    <StackPanel>
+                                        <TextBlock Width="160">
+                                            <Run Text="Name:"></Run>
+                                        </TextBlock>
+                                        <TextBlock Width="160" Background="#b3ffe5">
+                                            <Run Text="-----------------------------------"></Run>
+                                        </TextBlock>
+                                        <TextBlock Width="160" Background="#b3ffe5">
                                             <Run Text="{Binding Name}"></Run>
+                                            <Run Text="  "></Run>
                                         </TextBlock>
                                     </StackPanel>
                                     <StackPanel>
-                                        <TextBlock>
-                                            <Run Text="Kind"></Run>
+                                        <TextBlock Width="160">
+                                            <Run Text="Kind:"></Run>
                                         </TextBlock>
-                                        <TextBlock>
+                                        <TextBlock Width="160" Background="#b3ffe5">
+                                            <Run Text="-----------------------------------"></Run>
+                                        </TextBlock>
+                                        <TextBlock Width="160" Background="#b3ffe5">
                                             <Run Text="{Binding AnimalKind.Name}"></Run>
                                         </TextBlock>
                                     </StackPanel>

@@ -26,6 +26,7 @@ namespace AnimalsZoo.ADOApp
         public int Aviary_Id { get; set; }
         public int Kind_Id { get; set; }
         public int Condition_Id { get; set; }
+        public byte[] Image { get; set; }
     
         public virtual AnimalKind AnimalKind { get; set; }
         public virtual Aviary Aviary { get; set; }

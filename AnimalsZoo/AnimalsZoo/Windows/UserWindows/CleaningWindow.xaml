@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AnimalsZoo.Windows.UserWindows"
         mc:Ignorable="d"
-        Title="CleaningWindow" Height="450" Width="800">
+        Title="Cleaning" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -24,32 +24,41 @@
         
         <ScrollViewer Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Height="300" Width="700">
             <StackPanel>
-                <ListView x:Name="ListAviary" SelectionChanged="Select">
+                <ListView x:Name="ListAviary" SelectionChanged="Select" HorizontalAlignment="Center">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <StackPanel>
-                                        <TextBlock>
-                                            <Run Text="Name   |   "></Run>
+                                        <TextBlock Width="220">
+                                            <Run Text="Name:"></Run>
                                         </TextBlock>
-                                        <TextBlock>
+                                        <TextBlock Width="220" Background="#b3ffe5">
+                                            <Run Text="----------------------------------"></Run>
+                                        </TextBlock>
+                                        <TextBlock Width="220" Background="#b3ffe5">
                                             <Run Text="{Binding Name}"></Run>
                                         </TextBlock>
                                     </StackPanel>
                                     <StackPanel>
-                                        <TextBlock>
-                                            <Run Text="Number of animals   |   "></Run>
+                                        <TextBlock Width="220">
+                                            <Run Text="Number of animals:"></Run>
                                         </TextBlock>
-                                        <TextBlock>
+                                        <TextBlock Width="220" Background="#b3ffe5">
+                                            <Run Text="-----------------------------------"></Run>
+                                        </TextBlock>
+                                        <TextBlock Width="220" Background="#b3ffe5">
                                             <Run Text="{Binding AnimalCount}"></Run>
                                         </TextBlock>
                                     </StackPanel>
                                     <StackPanel>
-                                        <TextBlock>
-                                            <Run Text="Cleaned"></Run>
+                                        <TextBlock Width="220">
+                                            <Run Text="Cleaned:"></Run>
                                         </TextBlock>
-                                        <TextBlock>
+                                        <TextBlock Width="220" Background="#b3ffe5">
+                                            <Run Text="----------------------------------"></Run>
+                                        </TextBlock>
+                                        <TextBlock Width="220" Background="#b3ffe5">
                                             <Run Text="{Binding Cleaned}"></Run>
                                         </TextBlock>
                                     </StackPanel>

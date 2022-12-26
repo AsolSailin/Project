@@ -10,8 +10,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Login" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="Password" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="User_Id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Animal">
@@ -19,10 +19,11 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Aviary_Id" Type="int" Nullable="false" />
           <Property Name="Kind_Id" Type="int" Nullable="false" />
           <Property Name="Condition_Id" Type="int" Nullable="false" />
+          <Property Name="Image" Type="image" Nullable="false" />
         </EntityType>
         <EntityType Name="Animal_Material">
           <Key>
@@ -45,62 +46,62 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Aviary">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="AnimalCount" Type="int" Nullable="false" />
-          <Property Name="Temperature_Id" Type="int" Nullable="false" />
           <Property Name="Cleaned" Type="bit" Nullable="false" />
-          <Property Name="Cooled" Type="bit" />
-          <Property Name="Type_Id" Type="int" />
+          <Property Name="Cooled" Type="bit" Nullable="false" />
+          <Property Name="Type_Id" Type="int" Nullable="false" />
+          <Property Name="Temperature_Id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="CareMaterial">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="ConditionAccommodation">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="MinTemp" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="MaxTemp" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="MinTemp" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MaxTemp" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="CoolingMethod">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CoolingFacility" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="CoolingFacility" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nchar" MaxLength="15" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Temperature">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="DayTime" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="DayTime" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Value" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Temperature_Method">
@@ -115,15 +116,15 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Role_Id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="User_Aviary">
@@ -243,7 +244,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Aviary_TypeAviary">
-          <End Role="TypeAviary" Type="Self.TypeAviary" Multiplicity="0..1" />
+          <End Role="TypeAviary" Type="Self.TypeAviary" Multiplicity="1" />
           <End Role="Aviary" Type="Self.Aviary" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TypeAviary">
@@ -402,8 +403,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Login" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="User_Id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_Account_User" FromRole="Account" ToRole="User" />
         </EntityType>
@@ -412,10 +413,11 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Aviary_Id" Type="Int32" Nullable="false" />
           <Property Name="Kind_Id" Type="Int32" Nullable="false" />
           <Property Name="Condition_Id" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
           <NavigationProperty Name="AnimalKind" Relationship="Self.FK_Animal_AnimalKind" FromRole="Animal" ToRole="AnimalKind" />
           <NavigationProperty Name="Aviary" Relationship="Self.FK_Animal_Aviary" FromRole="Animal" ToRole="Aviary" />
           <NavigationProperty Name="ConditionAccommodation" Relationship="Self.FK_Animal_ConditionAccommodation" FromRole="Animal" ToRole="ConditionAccommodation" />
@@ -447,7 +449,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Animal" Relationship="Self.FK_Animal_AnimalKind" FromRole="AnimalKind" ToRole="Animal" />
         </EntityType>
         <EntityType Name="Aviary">
@@ -455,12 +457,12 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="AnimalCount" Type="Int32" Nullable="false" />
-          <Property Name="Temperature_Id" Type="Int32" Nullable="false" />
           <Property Name="Cleaned" Type="Boolean" Nullable="false" />
-          <Property Name="Cooled" Type="Boolean" />
-          <Property Name="Type_Id" Type="Int32" />
+          <Property Name="Cooled" Type="Boolean" Nullable="false" />
+          <Property Name="Type_Id" Type="Int32" Nullable="false" />
+          <Property Name="Temperature_Id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Animal" Relationship="Self.FK_Animal_Aviary" FromRole="Aviary" ToRole="Animal" />
           <NavigationProperty Name="Temperature" Relationship="Self.FK_Aviary_Temperature" FromRole="Aviary" ToRole="Temperature" />
           <NavigationProperty Name="TypeAviary" Relationship="Self.FK_Aviary_TypeAviary" FromRole="Aviary" ToRole="TypeAviary" />
@@ -471,7 +473,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Animal_Material" Relationship="Self.FK_Animal_Material_CareMaterial" FromRole="CareMaterial" ToRole="Animal_Material" />
         </EntityType>
         <EntityType Name="ConditionAccommodation">
@@ -479,8 +481,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MinTemp" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="MaxTemp" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="MinTemp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MaxTemp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Animal" Relationship="Self.FK_Animal_ConditionAccommodation" FromRole="ConditionAccommodation" ToRole="Animal" />
         </EntityType>
         <EntityType Name="CoolingMethod">
@@ -488,7 +490,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CoolingFacility" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="CoolingFacility" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Temperature_Method" Relationship="Self.FK_Temperature_Method_CoolingMethod" FromRole="CoolingMethod" ToRole="Temperature_Method" />
         </EntityType>
         <EntityType Name="Product">
@@ -496,7 +498,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Animal_Product" Relationship="Self.FK_Animal_Product_Product" FromRole="Product" ToRole="Animal_Product" />
         </EntityType>
         <EntityType Name="Role">
@@ -504,7 +506,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
         </EntityType>
         <EntityType Name="Temperature">
@@ -512,7 +514,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DayTime" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="DayTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Value" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Aviary" Relationship="Self.FK_Aviary_Temperature" FromRole="Temperature" ToRole="Aviary" />
           <NavigationProperty Name="Temperature_Method" Relationship="Self.FK_Temperature_Method_Temperature" FromRole="Temperature" ToRole="Temperature_Method" />
@@ -531,8 +533,8 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Aviary" Relationship="Self.FK_Aviary_TypeAviary" FromRole="TypeAviary" ToRole="Aviary" />
         </EntityType>
         <EntityType Name="User">
@@ -540,7 +542,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Role_Id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Account" Relationship="Self.FK_Account_User" FromRole="User" ToRole="Account" />
           <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
@@ -665,7 +667,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Aviary_TypeAviary">
-          <End Role="TypeAviary" Type="Self.TypeAviary" Multiplicity="0..1" />
+          <End Role="TypeAviary" Type="Self.TypeAviary" Multiplicity="1" />
           <End Role="Aviary" Type="Self.Aviary" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TypeAviary">
@@ -838,6 +840,7 @@
                 <ScalarProperty Name="Aviary_Id" ColumnName="Aviary_Id" />
                 <ScalarProperty Name="Kind_Id" ColumnName="Kind_Id" />
                 <ScalarProperty Name="Condition_Id" ColumnName="Condition_Id" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -873,10 +876,10 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="AnimalCount" ColumnName="AnimalCount" />
-                <ScalarProperty Name="Temperature_Id" ColumnName="Temperature_Id" />
                 <ScalarProperty Name="Cleaned" ColumnName="Cleaned" />
                 <ScalarProperty Name="Cooled" ColumnName="Cooled" />
                 <ScalarProperty Name="Type_Id" ColumnName="Type_Id" />
+                <ScalarProperty Name="Temperature_Id" ColumnName="Temperature_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

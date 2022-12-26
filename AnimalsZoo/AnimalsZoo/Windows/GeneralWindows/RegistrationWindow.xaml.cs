@@ -23,16 +23,23 @@ namespace AnimalsZoo.Windows.GeneralWindows
         public RegistrationWindow()
         {
             InitializeComponent();
+            var role = App.Connection.Role.ToList();
+            foreach (var item in role)
+            {
+                RoleComboBox.Items.Add(item);
+            }
         }
 
         private void RegBtn_Click(object sender, RoutedEventArgs e)
         {
-            /*if (tbLogin.Text != "" && tbPassword.Text != "" && tbName.Text != "" && tbRole.Text != "")
+            var role = RoleComboBox.SelectedItem as Role;
+
+            if (tbLogin.Text != "" && tbPassword.Text != "" && tbName.Text != "" && RoleComboBox.Text != "")
             {
                 User newUser = new User()
                 {
                     Name = tbName.Text,
-                    Role_Id = int.Parse(tbRole.Text)
+                    Role_Id = role.Id
                 };
                 Account newAccount = new Account()
                 {
@@ -48,8 +55,8 @@ namespace AnimalsZoo.Windows.GeneralWindows
             }
             else
             {
-                MessageBox.Show("Incorrect data");
-            }*/
+                MessageBox.Show("Incorrect data", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)
